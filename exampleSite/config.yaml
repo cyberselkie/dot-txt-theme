@@ -1,0 +1,47 @@
+# yaml-language-server: $schema=https://platen.io/schemas/config/schema.json
+# Update to your own settings for URL/title
+#baseURL: https://dot-txt-theme.netlify.app/
+title:   .txt Platen Theme
+
+module:
+  imports:
+   - path: github.com/platenio/platen/modules/platen
+
+menu:
+  before:
+    - name: Blog
+      url: /posts
+      weight: 10
+  after:
+    - name: Platen Documentation
+      url: https://platen.io/
+      weight: 10
+
+params:
+  description: .txt Platen Theme
+  platen:
+    theme:
+      variables:
+        dark_css: { sl-color-primary-600: 'var(--base-black)', sl-color-neutral-200: 'var(--base-white)', sl-font-sans: 'Courier, monospace', --track-width: 2px}
+        light_css: { sl-color-primary-600: 'var(--base-black)', sl-color-neutral-200: 'var(--base-white)', sl-font-sans: 'Courier, monospace', --track-width: 2px}
+    markup:
+      tabs:
+        use_legacy: false
+    features:
+      figlet:
+        enabled:     true
+        always_load: true
+        partials:
+          header: platen/features/figlet/header
+
+markup:
+  defaultMarkdownHandler: goldmark
+  goldmark:
+    parser:
+      attribute:
+        block: true
+        title: true
+    renderer:
+      hardWraps: false
+      unsafe: true
+      xhtml: true

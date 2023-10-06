@@ -29,6 +29,8 @@ dogshit. If you use it for your own work, attribution is appreciated but not req
 - Sivad's Sanctum ([Twitter][29], [Itch][30])
 - Zeshio Illustration ([Yol'Najj Forest Zine][31], [Patreon][32], [Twitter][33], [Itch][34])
 
+<hr>
+
 ## Playing Picaroons
 
 You're a picaroon, a rogue who relies on your wits and skills to get into and out of trouble.

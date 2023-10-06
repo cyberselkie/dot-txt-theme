@@ -5,6 +5,7 @@ title:   .txt Platen Theme
 
 module:
   imports:
+   - path: github.com/cyberselkie/dot-txt-theme
    - path: github.com/platenio/platen/modules/platen
 
 menu:

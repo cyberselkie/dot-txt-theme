@@ -645,35 +645,47 @@ const figlet = (()=>{
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script defer>
+  function makeFiglet(firstLine, appendElement) {
+    figlet.text(
+        firstLine,
+        {
+        font: "Standard",
+        horizontalLayout: "controlled smushing",
+        verticalLayout: "default",
+        width: 70,
+        whitespaceBreak: true,
+        },
+        function (err, data) {
+        if (err) {
+            console.log("Something went wrong...");
+            console.dir(err);
+            return;
+        };
+        console.log(data);
+        let p = document.createElement("pre");
+        p.setAttribute("aria-hidden", "true")
+        p.setAttribute("style", "margin: auto;")
+        let text = p.append(data);
+        appendElement.append(p);
+        }
+    );
+    }
+
   document.addEventListener("DOMContentLoaded", function(){
   let headers = document.getElementsByTagName('h1');
   console.log(headers);
-    content = headers[0].innerHTML;
-    tmp = content.split("\n");
-    var firstLine = tmp[0];
-    
-  figlet.text(
-    firstLine,
-    {
-      font: "Standard",
-      horizontalLayout: "controlled smushing",
-      verticalLayout: "default",
-      width: 70,
-      whitespaceBreak: true,
-    },
-    function (err, data) {
-      if (err) {
-        console.log("Something went wrong...");
-        console.dir(err);
-        return;
-    };
-      console.log(data);
-      let p = document.createElement("pre");
-      p.setAttribute("aria-hidden", "true")
-      let text = p.append(data);
-      headers[0].append(p);
+    if (headers[0].firstChild.nodeName !== 'A') {
+        content = headers[0].innerHTML;
+        tmp = content.split("\n");
+        var firstLine = tmp[0];
+        makeFiglet(firstLine, headers[0]);
     }
-  );
-});
+    else {
+        content = headers[0].firstElementChild.innerHTML;
+        tmp = content.split("\n");
+        var firstLine = tmp[0];
+        makeFiglet(firstLine, headers[0]);
+        }
+    });
 </script>
 {{- end }}
